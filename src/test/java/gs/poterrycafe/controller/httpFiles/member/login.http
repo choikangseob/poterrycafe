@@ -1,0 +1,10 @@
+POST http://localhost:8080/login
+Content-Type: application/x-www-form-urlencoded
+
+username=maple&password=123123
+> {%
+
+client.log(response.headers.valuesOf("Authorization")[0]);
+client.global.set("authToken",response.headers.valuesOf("Authorization")[0]) // 토큰 값을 global 변수에 set
+%}
+###
