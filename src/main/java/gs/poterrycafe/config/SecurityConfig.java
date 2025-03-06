@@ -1,6 +1,7 @@
 package gs.poterrycafe.config;
 
 
+import gs.poterrycafe.common.JWTFilter;
 import gs.poterrycafe.common.JWTUtil;
 import gs.poterrycafe.common.LoginFilter;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,7 +23,7 @@ public class SecurityConfig {
     //AuthenticationManager가 인자로 받을 AuthenticationConfiguraion 객체 생성자 주입
     private final AuthenticationConfiguration authenticationConfiguration;
 
-    private final JWTUtil jwtUtil
+    private final JWTUtil jwtUtil;
 
     public SecurityConfig(AuthenticationConfiguration authenticationConfiguration, JWTUtil jwtUtil) {
 
@@ -45,26 +47,25 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
-        //csrf disable
-        http
-                .csrf((auth) -> auth.disable());
-
-        //From 로그인 방식 disable
-        http
-                .formLogin((auth) -> auth.disable());
-
-        //http basic 인증 방식 disable
-        http
-                .httpBasic((auth) -> auth.disable());
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-                .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/member").permitAll()
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                .csrf(AbstractHttpConfigurer::disable);
+        // spring security 에서 제공하는 form login 기능을 사용하지 않겠다는 의미
+        http
+                .formLogin(AbstractHttpConfigurer::disable);
+
+        http
+                .httpBasic(AbstractHttpConfigurer::disable);
+
+        http
+                .authorizeHttpRequests((request) -> request
+                        .requestMatchers("/member","/error").permitAll()
                         .anyRequest().authenticated());
 
+        http
+                .addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
+;
         http
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration),jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
