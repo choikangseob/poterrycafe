@@ -1,8 +1,8 @@
-package gs.poterrycafe.controller;
+package ks.poterrycafe.controller;
 
-import gs.poterrycafe.dto.request.JoinMemberRequest;
-import gs.poterrycafe.dto.response.MemberResponse;
-import gs.poterrycafe.service.JoinMemberService;
+import ks.poterrycafe.dto.request.JoinMemberRequest;
+import ks.poterrycafe.dto.response.MemberResponse;
+import ks.poterrycafe.service.JoinMemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

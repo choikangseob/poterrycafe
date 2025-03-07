@@ -1,6 +1,6 @@
-package gs.poterrycafe.repository;
+package ks.poterrycafe.repository;
 
-import gs.poterrycafe.entity.Member;
+import ks.poterrycafe.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

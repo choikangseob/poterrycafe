@@ -1,7 +1,7 @@
-package gs.poterrycafe.common.entity;
+package ks.poterrycafe.common.entity;
 
 
-import gs.poterrycafe.common.MemberDetails;
+import ks.poterrycafe.common.MemberDetails;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;

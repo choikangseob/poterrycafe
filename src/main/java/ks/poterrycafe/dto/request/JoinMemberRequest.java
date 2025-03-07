@@ -1,4 +1,4 @@
-package gs.poterrycafe.dto.request;
+package ks.poterrycafe.dto.request;
 
 
 

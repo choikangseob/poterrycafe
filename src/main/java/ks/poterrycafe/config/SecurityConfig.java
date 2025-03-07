@@ -1,9 +1,8 @@
-package gs.poterrycafe.config;
+package ks.poterrycafe.config;
 
-
-import gs.poterrycafe.common.JWTFilter;
-import gs.poterrycafe.common.JWTUtil;
-import gs.poterrycafe.common.LoginFilter;
+import ks.poterrycafe.common.JWTFilter;
+import ks.poterrycafe.common.JWTUtil;
+import ks.poterrycafe.common.LoginFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -65,7 +64,7 @@ public class SecurityConfig {
 
         http
                 .addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
-;
+
         http
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration),jwtUtil), UsernamePasswordAuthenticationFilter.class);
 

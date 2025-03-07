@@ -1,10 +1,10 @@
-package gs.poterrycafe.service;
+package ks.poterrycafe.service;
 
 
-import gs.poterrycafe.dto.request.JoinMemberRequest;
-import gs.poterrycafe.dto.response.MemberResponse;
-import gs.poterrycafe.entity.Member;
-import gs.poterrycafe.repository.MemberJPARepository;
+import ks.poterrycafe.dto.request.JoinMemberRequest;
+import ks.poterrycafe.entity.Member;
+import ks.poterrycafe.dto.response.MemberResponse;
+import ks.poterrycafe.repository.MemberJPARepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package gs.poterrycafe.common;
+package ks.poterrycafe.common;
 
-import gs.poterrycafe.entity.Member;
+import ks.poterrycafe.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package gs.poterrycafe.common;
+package ks.poterrycafe.common;
 
 
 import io.jsonwebtoken.Jwts;

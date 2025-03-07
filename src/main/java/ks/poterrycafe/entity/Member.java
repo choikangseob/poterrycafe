@@ -1,6 +1,6 @@
-package gs.poterrycafe.entity;
+package ks.poterrycafe.entity;
 
-import gs.poterrycafe.dto.request.JoinMemberRequest;
+import ks.poterrycafe.dto.request.JoinMemberRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

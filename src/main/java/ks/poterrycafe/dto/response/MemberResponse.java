@@ -1,8 +1,7 @@
-package gs.poterrycafe.dto.response;
+package ks.poterrycafe.dto.response;
 
 
-import gs.poterrycafe.dto.request.JoinMemberRequest;
-import gs.poterrycafe.entity.Member;
+import ks.poterrycafe.entity.Member;
 import lombok.Builder;
 
 @Builder

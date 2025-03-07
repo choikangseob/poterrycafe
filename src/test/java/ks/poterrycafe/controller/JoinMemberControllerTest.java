@@ -1,7 +1,7 @@
-package gs.poterrycafe.controller;
+package ks.poterrycafe.controller;
 
-import gs.poterrycafe.entity.Member;
-import gs.poterrycafe.repository.MemberJPARepository;
+import ks.poterrycafe.entity.Member;
+import ks.poterrycafe.repository.MemberJPARepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
