@@ -46,12 +46,20 @@ public class JWTFilter extends OncePerRequestFilter {
                .id(jwtUtil.getId(token))
                .build();
 
-       MemberDetails memberDetails = new MemberDetails(member);
+       if(member.getUsername().equals("admin")){
 
-        Authentication authToken = new UsernamePasswordAuthenticationToken(memberDetails, null, memberDetails.getAuthorities());
+           String role = "ROLE_ADMIN";
+           MemberDetails memberDetails = new MemberDetails(member,role);
 
-        SecurityContextHolder.getContext().setAuthentication(authToken);
+           Authentication authToken = new UsernamePasswordAuthenticationToken(memberDetails, null, memberDetails.getAuthorities());
 
-        filterChain.doFilter(request, response);
+           SecurityContextHolder.getContext().setAuthentication(authToken);
+
+           filterChain.doFilter(request, response);
+
+       }
+
+
+
     }
 }

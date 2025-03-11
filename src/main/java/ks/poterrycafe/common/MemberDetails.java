@@ -3,9 +3,11 @@ package ks.poterrycafe.common;
 import ks.poterrycafe.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -13,13 +15,14 @@ import java.util.List;
 public class MemberDetails implements UserDetails {
 
     private final Member member;
+    private final String role;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
-        return List.of();
+        // role을 Spring Security에서 인식할 수 있도록 SimpleGrantedAuthority로 변환
+        return Collections.singletonList(new SimpleGrantedAuthority(role));
     }
-
     public Long getId(){
         return member.getId();
     }

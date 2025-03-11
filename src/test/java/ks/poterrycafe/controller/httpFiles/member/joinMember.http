@@ -3,8 +3,8 @@ POST http://localhost:8080/member
 Content-Type: application/json
 
 {
-  "username": "maple",
-  "email": "vwko@naver.com",
+  "username": "admin",
+  "email": "admin@naver.com",
   "password": "123123"
 
 }

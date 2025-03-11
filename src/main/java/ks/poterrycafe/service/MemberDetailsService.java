@@ -30,7 +30,12 @@ public class MemberDetailsService implements UserDetailsService {
         Optional<Member> memberData = memberJPARepository.findByUsername(username);
 
         if(memberData.isPresent()) {
-            return new MemberDetails(memberData.get());
+            Member member = memberData.get();
+
+            // username이 "admin"이면 ROLE_ADMIN, 아니면 ROLE_USER 부여
+            String role = username.equals("admin") ? "ROLE_ADMIN" : "ROLE_USER";
+
+            return new MemberDetails(member, role);
         }
          return null;
     }
