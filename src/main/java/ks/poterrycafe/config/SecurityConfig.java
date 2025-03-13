@@ -59,7 +59,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((request) -> request
-                        .requestMatchers("/member","/error").permitAll()
+                        .requestMatchers("/member","/error","/reissue").permitAll()
                         .anyRequest().authenticated());
 
         http

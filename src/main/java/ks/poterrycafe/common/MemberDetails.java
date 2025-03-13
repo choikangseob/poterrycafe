@@ -11,12 +11,21 @@ import java.util.Collections;
 import java.util.List;
 
 
-@RequiredArgsConstructor
+
 public class MemberDetails implements UserDetails {
 
     private final Member member;
     private final String role;
 
+    public MemberDetails(Member temporaryUsername2) {
+        this.member = temporaryUsername2;
+        this.role = "DEFAULT_ROLE";
+    }
+
+    public MemberDetails(Member member, String role) {
+        this.member = member;
+        this.role = role;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -26,6 +35,8 @@ public class MemberDetails implements UserDetails {
     public Long getId(){
         return member.getId();
     }
+
+
     @Override
     public String getPassword() {
         return member.getPassword();
