@@ -25,11 +25,14 @@ public class Member {
 
     private String password;
 
+    private String role;
+
 
     public Member(JoinMemberRequest joinMemberRequest) {
         this.username = joinMemberRequest.username();
         this.email = joinMemberRequest.email();
         this.password = joinMemberRequest.password();
+        this.role = joinMemberRequest.role();
     }
 
     public static Member from(JoinMemberRequest joinMemberRequest) {

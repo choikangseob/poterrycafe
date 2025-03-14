@@ -51,7 +51,7 @@ public class JWTUtil {
                 .claim("category", category)
                 .claim("username", memberDetails.getUsername())
                 .claim("id", memberDetails.getId())
-                .claim("role", role)
+                .claim("role", memberDetails.getRole())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expiredMs))
                 .signWith(secretKey)

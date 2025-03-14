@@ -47,6 +47,9 @@ public class MemberDetails implements UserDetails {
         return member.getUsername();
     }
 
+
+    public String getRole() {return member.getRole();}
+
     @Override
     public boolean isAccountNonExpired() {
         return true;

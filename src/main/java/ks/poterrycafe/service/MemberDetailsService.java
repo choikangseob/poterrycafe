@@ -27,13 +27,13 @@ public class MemberDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Member> memberData = memberJPARepository.findByUsername(username);
+        Optional<Member> memberData = memberJPARepository.findRoleByUsername(username);
 
         if(memberData.isPresent()) {
             Member member = memberData.get();
 
             // username이 "admin"이면 ROLE_ADMIN, 아니면 ROLE_USER 부여
-            String role = username.equals("admin") ? "ROLE_ADMIN" : "ROLE_USER";
+            String role = member.getRole();
 
             return new MemberDetails(member, role);
         }

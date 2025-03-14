@@ -9,7 +9,8 @@ public record MemberResponse(
         Long id,
         String username,
         String email,
-        String password
+        String password,
+        String role
 ) {
     public static MemberResponse of(Member savedMember){
         return MemberResponse.builder()
@@ -17,6 +18,7 @@ public record MemberResponse(
                 .username(savedMember.getUsername())
                 .email(savedMember.getEmail())
                 .password(savedMember.getPassword())
+                .role(savedMember.getRole())
                 .build();
     }
 }
