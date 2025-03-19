@@ -3,6 +3,7 @@ package ks.poterrycafe.config;
 import ks.poterrycafe.common.JWTFilter;
 import ks.poterrycafe.common.JWTUtil;
 import ks.poterrycafe.common.LoginFilter;
+import ks.poterrycafe.repository.RefreshJPARepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,11 +25,15 @@ public class SecurityConfig {
 
     private final JWTUtil jwtUtil;
 
-    public SecurityConfig(AuthenticationConfiguration authenticationConfiguration, JWTUtil jwtUtil) {
+    private final RefreshJPARepository  refreshJPARepository;
+
+    public SecurityConfig(AuthenticationConfiguration authenticationConfiguration, JWTUtil jwtUtil,RefreshJPARepository refreshJPARepository) {
 
         this.authenticationConfiguration = authenticationConfiguration;
 
         this.jwtUtil = jwtUtil;
+
+        this.refreshJPARepository = refreshJPARepository;
     }
 
 
@@ -66,7 +71,7 @@ public class SecurityConfig {
                 .addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
 
         http
-                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration),jwtUtil), UsernamePasswordAuthenticationFilter.class);
+                .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration),jwtUtil,refreshJPARepository), UsernamePasswordAuthenticationFilter.class);
 
         http
                 .sessionManagement((session) -> session

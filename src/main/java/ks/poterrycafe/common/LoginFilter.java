@@ -4,6 +4,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import ks.poterrycafe.entity.Refresh;
+import ks.poterrycafe.repository.RefreshJPARepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +16,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 
 @RequiredArgsConstructor
@@ -23,6 +26,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private final JWTUtil jwtUtil;
 
+    private final RefreshJPARepository refreshJPARepository;
 
 
     @Override
@@ -42,6 +46,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         System.out.println("로그인 성공");
 
         MemberDetails username = (MemberDetails) authResult.getPrincipal();
+        String refreshUsername = username.getUsername();
         Collection<? extends GrantedAuthority> authorities = authResult.getAuthorities();
         String role = "ROLE_USER";  // 기본 권한 설정 (권한이 없을 때 사용)
 
@@ -68,6 +73,10 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String access = jwtUtil.createJwt("access", username,role, 600000L);
         String refresh = jwtUtil.createJwt("refresh", username,role,86400000L);
 
+
+        //Refresh 토큰 저장
+        addRefreshEntity(refreshUsername, refresh, 86400000L);
+
         //응답 설정
         response.setHeader("access", access);
         response.addCookie(createCookie("refresh", refresh));
@@ -81,6 +90,18 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         System.out.println("로그인 실패");
        response.setStatus(401);
+    }
+
+    private void addRefreshEntity(String username, String refresh, Long expiredMs) {
+
+        Date date = new Date(System.currentTimeMillis() + expiredMs);
+
+        Refresh refreshEntity = new Refresh();
+        refreshEntity.setUsername(username);
+        refreshEntity.setRefresh(refresh);
+        refreshEntity.setExpiration(date.toString());
+
+        refreshJPARepository.save(refreshEntity);
     }
 
     private Cookie createCookie(String key, String value) {
