@@ -3,6 +3,7 @@ package ks.poterrycafe.config;
 import ks.poterrycafe.common.JWTFilter;
 import ks.poterrycafe.common.JWTUtil;
 import ks.poterrycafe.common.LoginFilter;
+import ks.poterrycafe.common.entity.CustomLogoutFilter;
 import ks.poterrycafe.repository.RefreshJPARepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -72,6 +74,8 @@ public class SecurityConfig {
 
         http
                 .addFilterAt(new LoginFilter(authenticationManager(authenticationConfiguration),jwtUtil,refreshJPARepository), UsernamePasswordAuthenticationFilter.class);
+        http
+                .addFilterBefore(new CustomLogoutFilter(jwtUtil, refreshJPARepository), LogoutFilter.class);
 
         http
                 .sessionManagement((session) -> session

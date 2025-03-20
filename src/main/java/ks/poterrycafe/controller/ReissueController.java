@@ -95,7 +95,7 @@ public class ReissueController {
         }
 // MemberDetails 객체를 생성
             MemberDetails username = new MemberDetails(temporaryUsername2);
-
+            String refreshUsername = username.getUsername();
 
             String role = jwtUtil.getRole(refresh);
 
@@ -105,7 +105,7 @@ public class ReissueController {
 
         //Refresh 토큰 저장 DB에 기존의 Refresh 토큰 삭제 후 새 Refresh 토큰 저장
         refreshJPARepository.deleteByRefresh(refresh);
-        addRefreshEntity(username, newRefresh, 86400000L);
+        addRefreshEntity(refreshUsername, newRefresh, 86400000L);
 
             //response
             response.setHeader("access", newAccess);
