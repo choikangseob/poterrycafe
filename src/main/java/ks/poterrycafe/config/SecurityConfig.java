@@ -66,8 +66,9 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((request) -> request
-                        .requestMatchers("/member","/error","/reissue").permitAll()
-                        .anyRequest().authenticated());
+                        .requestMatchers("/member","/saveProduct","/error","/reissue").permitAll()
+                        .anyRequest().authenticated()
+                );
 
         http
                 .addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);

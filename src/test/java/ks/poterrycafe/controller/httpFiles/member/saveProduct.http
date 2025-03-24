@@ -1,0 +1,12 @@
+### Send POST request with json body
+POST http://localhost:8080/saveProduct
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "product_name": "일반도자기",
+  "description": "일반적인 느낌의 도자기입니다 !",
+  "quantity": 8,
+  "price": 25000
+
+}
