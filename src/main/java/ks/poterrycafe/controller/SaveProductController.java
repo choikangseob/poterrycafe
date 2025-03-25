@@ -25,6 +25,7 @@ public class SaveProductController {
             @RequestBody SaveProductRequest saveProductRequest,
             @AuthenticationPrincipal MemberDetails member
     ){
+
         return ResponseEntity.ok(saveProductService.saveProduct(saveProductRequest,member));
     }
 

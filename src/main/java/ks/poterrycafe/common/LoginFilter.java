@@ -62,6 +62,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
             System.out.println("No authorities assigned to the user. Default role: " + role);
         }
 
+
+
 // 이후 role을 사용하여 로직 처리
         System.out.println("User role: " + role);
         // String token = jwtUtil.createJwt(username);
@@ -92,12 +94,13 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
        response.setStatus(401);
     }
 
-    private void addRefreshEntity(String username, String refresh, Long expiredMs) {
+    private void addRefreshEntity(String username,String role, String refresh, Long expiredMs) {
 
         Date date = new Date(System.currentTimeMillis() + expiredMs);
 
         Refresh refreshEntity = new Refresh();
         refreshEntity.setUsername(username);
+        refreshEntity.setRole(role);
         refreshEntity.setRefresh(refresh);
         refreshEntity.setExpiration(date.toString());
 
