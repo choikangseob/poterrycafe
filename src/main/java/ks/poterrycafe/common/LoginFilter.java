@@ -94,13 +94,12 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
        response.setStatus(401);
     }
 
-    private void addRefreshEntity(String username,String role, String refresh, Long expiredMs) {
+    private void addRefreshEntity(String username, String refresh, Long expiredMs) {
 
         Date date = new Date(System.currentTimeMillis() + expiredMs);
 
         Refresh refreshEntity = new Refresh();
         refreshEntity.setUsername(username);
-        refreshEntity.setRole(role);
         refreshEntity.setRefresh(refresh);
         refreshEntity.setExpiration(date.toString());
 

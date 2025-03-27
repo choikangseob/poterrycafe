@@ -1,7 +1,9 @@
 ### Send POST request with json body
 POST http://localhost:8080/saveProduct
 Content-Type: application/json
-Authorization: {{authToken}}
+access: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiYWRtaW4iLCJpZCI6Mywicm9sZSI6IlJPTEVfQURNSU4iLCJpYXQiOjE3NDMwNTI0NzMsImV4cCI6MTc0MzA1MzA3M30.gmwZlWH7Fo2qXeZH6mBoDaIq1HrEmt0YN2s_1w3-FrQ
+
+//Authorization: {{authToken}}
 
 {
   "product_name": "일반도자기",
