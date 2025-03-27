@@ -26,11 +26,11 @@ public class Product {
     private int price;
 
     public Product(SaveProductRequest saveProductRequest) {
-        this.product_id = product_id;
-        this.product_name = product_name;
-        this.description = description;
-        this.quantity = quantity;
-        this.price = price;
+        this.product_id = saveProductRequest.product_id();
+        this.product_name = saveProductRequest.product_name();
+        this.description = saveProductRequest.description();
+        this.quantity = saveProductRequest.quantity();
+        this.price = saveProductRequest.price();
     }
 
     public static Product from(SaveProductRequest saveProductRequest) {

@@ -48,7 +48,7 @@ public class MemberDetails implements UserDetails {
     }
 
 
-    public String getRole() {return member.getRole();}
+    public String getRole() {return role;}
 
 
 
