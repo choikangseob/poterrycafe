@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import ks.poterrycafe.common.entity.EssentialColumns;
 import ks.poterrycafe.dto.request.SaveProductRequest;
 import lombok.*;
 
@@ -14,7 +15,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Product extends EssentialColumns {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

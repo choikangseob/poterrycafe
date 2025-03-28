@@ -1,7 +1,7 @@
 ### Send POST request with json body
 POST http://localhost:8080/saveProduct
 Content-Type: application/json
-access:eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiYWRtaW4iLCJpZCI6Mywicm9sZSI6IlJPTEVfQURNSU4iLCJpYXQiOjE3NDMwNTQ3NDIsImV4cCI6MTc0MzA1NTM0Mn0.4psJ7e378JRtUmDt28EmW-aYkqILC0TAG9xNKYRY64I
+access: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiYWRtaW4iLCJpZCI6Mywicm9sZSI6IlJPTEVfQURNSU4iLCJpYXQiOjE3NDMxNTM2MDcsImV4cCI6MTc0MzE1NDIwN30.F5dVmpqbqQTwPeQW4fr40vuxFDK21yaAmD-un8ycEeQ
 //Authorization: {{authToken}}
 
 {

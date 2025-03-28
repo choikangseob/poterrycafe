@@ -18,8 +18,9 @@ public class SaveProductService {
     public SaveProductResponse saveProduct(SaveProductRequest saveProductRequest, MemberDetails member) {
 
 
-        if (member.getRole().isEmpty() || member.getRole().equals("ROlE_USER")) {
+        if (member.getRole().isEmpty() || member.getRole().equals("ROLE_USER")) {
             throw new UnauthorizedAccessException("관리자만 제품을 등록할 수 있습니다.");
+
         }
             Product saveProduct = Product.from(saveProductRequest);
 
