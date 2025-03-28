@@ -1,6 +1,6 @@
 package ks.poterrycafe.dto.request;
 
-public record SaveProductRequest(
+public record UpdateProductRequest(
         int productId,
         String productName,
         String description,

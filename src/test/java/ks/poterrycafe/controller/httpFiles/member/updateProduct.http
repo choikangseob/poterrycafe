@@ -1,0 +1,13 @@
+### Send POST request with json body
+POST http://localhost:8080/updateProduct
+Content-Type: application/json
+access: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiYWRtaW4iLCJpZCI6Mywicm9sZSI6IlJPTEVfQURNSU4iLCJpYXQiOjE3NDMxNTc2NDcsImV4cCI6MTc0MzE1ODI0N30.XXP1LpKg9YxCrg0Xvg5tzjWs7GtH0Bo5aC0EFBNzENc
+//Authorization: {{authToken}}
+
+{
+  "productId": 8,
+  "productName": "일반도자기",
+  "description": "일반적인 느낌의 도자기입니다 !",
+  "quantity": 5,
+  "price": 25000
+}

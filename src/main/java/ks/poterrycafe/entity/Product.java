@@ -20,15 +20,15 @@ public class Product extends EssentialColumns {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int product_id;
-    private String product_name;
+    private int productId;
+    private String productName;
     private String description;
     private int quantity;
     private int price;
 
     public Product(SaveProductRequest saveProductRequest) {
-        this.product_id = saveProductRequest.product_id();
-        this.product_name = saveProductRequest.product_name();
+        this.productId = saveProductRequest.productId();
+        this.productName = saveProductRequest.productName();
         this.description = saveProductRequest.description();
         this.quantity = saveProductRequest.quantity();
         this.price = saveProductRequest.price();

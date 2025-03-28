@@ -66,7 +66,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((request) -> request
-                        .requestMatchers("/member","/saveProduct","/error","/reissue").permitAll()
+                        .requestMatchers("/member","/saveProduct","/updateProduct","/error","/reissue").permitAll()
                         .anyRequest().authenticated()
                 );
 
