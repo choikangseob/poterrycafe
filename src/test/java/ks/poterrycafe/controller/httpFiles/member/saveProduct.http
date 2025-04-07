@@ -1,11 +1,11 @@
 ### Send POST request with json body
 POST http://localhost:8080/saveProduct
 Content-Type: application/json
-access: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiYWRtaW4iLCJpZCI6Mywicm9sZSI6IlJPTEVfQURNSU4iLCJpYXQiOjE3NDMxNTM2MDcsImV4cCI6MTc0MzE1NDIwN30.F5dVmpqbqQTwPeQW4fr40vuxFDK21yaAmD-un8ycEeQ
+access: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiYWRtaW4iLCJpZCI6Mywicm9sZSI6IlJPTEVfQURNSU4iLCJpYXQiOjE3NDQwMDM0ODEsImV4cCI6MTc0NDAwNDA4MX0.06i7PPn_YLmRaTRvLXmU19Pq1pcNZOtXan7SNhVKX6g
 //Authorization: {{authToken}}
 
 {
-  "product_name": "일반도자기",
+  "productName": "일반도자기",
   "description": "일반적인 느낌의 도자기입니다 !",
   "quantity": 8,
   "price": 25000
