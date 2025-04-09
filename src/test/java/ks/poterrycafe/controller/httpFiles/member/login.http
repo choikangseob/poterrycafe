@@ -1,7 +1,7 @@
 POST http://localhost:8080/login
 Content-Type: application/x-www-form-urlencoded
 
-username=admin&password=123123
+username=maple&password=123123
 > {%
 
 client.log(response.headers.valuesOf("Authorization")[0]);
