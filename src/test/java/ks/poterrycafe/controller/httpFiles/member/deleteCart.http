@@ -1,9 +1,9 @@
 ### Send POST request with json body
-POST http://localhost:8080/createCart
+POST http://localhost:8080/deleteCart
 Content-Type: application/json
-//Authorization: {{authToken}}
 access: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoibWFwbGUiLCJpZCI6MSwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTc0NDI2OTU3NCwiZXhwIjoxNzQ0MjcwMTc0fQ.0b6Rn80VsMa4I4HmTMT0xDKGQNo0pKRUyU1bqpp2iVE
+//Authorization: {{authToken}}
 
 {
-
+  "cartId": 1
 }
