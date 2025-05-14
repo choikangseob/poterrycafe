@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ks.poterrycafe.repository.GetCartItemsMybatisRepository">
+
+    <select id="findByCartIdAndProductId" resultType="ks.poterrycafe.dto.response.GetCartItemsResponse">
+        SELECT
+            p.product_name AS productName,
+            p.description AS description,
+            ci.quantity,
+            ci.price
+        FROM cart_items ci
+                 JOIN product p ON ci.product_id = p.product_id
+        WHERE ci.cart_id = #{cartId}
+          AND ci.product_id = #{productId}
+    </select>
+</mapper>

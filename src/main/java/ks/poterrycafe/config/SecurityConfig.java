@@ -66,7 +66,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests((request) -> request
-                        .requestMatchers("/member","/saveProduct","/updateProduct","/deleteProduct","/getProduct","/createCart","/deleteCart","/addCartItems","/updateCartItems","deleteCartItems","/error","/reissue").permitAll()
+                        .requestMatchers("/member","/saveProduct","/updateProduct","/deleteProduct","/getProduct","/createCart","/deleteCart","/addCartItems","/updateCartItems","deleteCartItems","/getCartItems/{cartId}/{productId}","/error","/reissue").permitAll()
                         .anyRequest().authenticated()
                 );
 

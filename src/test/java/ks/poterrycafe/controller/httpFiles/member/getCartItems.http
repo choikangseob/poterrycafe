@@ -1,0 +1,6 @@
+### Send POST request with json body
+POST http://localhost:8080/getCartItems/2/9
+Content-Type: application/json
+//Authorization: {{authToken}}
+access: eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoibWFwbGUiLCJpZCI6MSwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTc0NzIyMzYzMiwiZXhwIjoxNzQ3MjI0MjMyfQ.DbHcI2tPx8ovuhnIVXjOvFSplTplaOLHYErgn-ODVYw
+
