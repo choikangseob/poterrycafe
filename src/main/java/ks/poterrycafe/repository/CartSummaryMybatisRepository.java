@@ -9,6 +9,9 @@ import java.util.List;
 @Mapper
 public interface CartSummaryMybatisRepository {
 
+    int findByCartIdCount(int cartId);
+
     List<CartSummaryResponse> findByCartId(int cartId);
 
+    void insertCartSummary(int cartId);
 }

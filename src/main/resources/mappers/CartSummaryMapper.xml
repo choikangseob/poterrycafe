@@ -3,7 +3,25 @@
 
 <mapper namespace="ks.poterrycafe.repository.CartSummaryMybatisRepository">
 
-    <select id="findByCartId" resultType="ks.poterrycafe.dto.response.CartSummaryResponse">
+
+    <select id="findByCartIdCount" resultType="int">
+        SELECT COUNT(*)
+        FROM cart_summary
+        WHERE cart_id = #{cartId}
+    </select>
+
+    <insert id="insertCartSummary">
+        INSERT INTO cart_summary (cart_id, total_items, total_price)
+        SELECT
+            #{cartId} AS cartId,
+            SUM(ci.quantity) AS totalItems,
+            SUM(ci.price) AS totalPrice
+        FROM cart_items ci
+                 JOIN cart i ON ci.cart_id = i.cart_id
+        WHERE ci.cart_id = #{cartId}
+    </insert>
+
+    <select id="findByCartId">
         SELECT
             #{cartId} AS cartId,
             SUM(ci.quantity) AS totalItems,
@@ -12,4 +30,6 @@
                  JOIN cart i ON ci.cart_id = i.cart_id
         WHERE ci.cart_id = #{cartId}
     </select>
+
+
 </mapper>

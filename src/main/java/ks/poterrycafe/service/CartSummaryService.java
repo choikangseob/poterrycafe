@@ -17,7 +17,13 @@ public class CartSummaryService {
 
     private final CartSummaryMybatisRepository cartSummaryMybatisRepository;
 
-    public List<CartSummaryResponse> cartSummary(int cartId){
+    public List<CartSummaryResponse> cartSummary(int cartId) {
+
+        int count = cartSummaryMybatisRepository.findByCartIdCount(cartId);
+
+        if (count == 0) {
+            cartSummaryMybatisRepository.insertCartSummary(cartId);
+        }
 
         return cartSummaryMybatisRepository.findByCartId(cartId);
     }
