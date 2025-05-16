@@ -11,7 +11,13 @@ public interface CartSummaryMybatisRepository {
 
     int findByCartIdCount(int cartId);
 
+    int findByCartIdOfSummaryCount(int cartId);
+
     List<CartSummaryResponse> findByCartId(int cartId);
 
     void insertCartSummary(int cartId);
+
+    void updateCartSummary(int cartId);
+
+    void deleteCartSummary(int cartId);
 }

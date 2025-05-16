@@ -10,6 +10,12 @@
         WHERE cart_id = #{cartId}
     </select>
 
+    <select id="findByCartIdOfSummaryCount" resultType="int">
+        SELECT COUNT(*)
+        FROM cart_summary
+        WHERE cart_id = #{cartId}
+    </select>
+
     <insert id="insertCartSummary">
         INSERT INTO cart_summary (cart_id, total_items, total_price)
         SELECT
@@ -20,6 +26,22 @@
                  JOIN cart i ON ci.cart_id = i.cart_id
         WHERE ci.cart_id = #{cartId}
     </insert>
+
+    <update id="updateCartSummary">
+        potterycafe> UPDATE cart_summary cs
+                         JOIN (
+                         SELECT cart_id, SUM(quantity) AS totalItems, SUM(price) AS totalPrice
+                         FROM cart_items
+                         WHERE cart_id = #{cartId}
+                         GROUP BY cart_id
+                         ) summary ON cs.cart_id = summary.cart_id
+                         SET cs.total_items = summary.totalItems,
+                             cs.total_price = summary.totalPrice
+                     WHERE cs.cart_id = #{cartId}
+
+
+
+    </update>
 
     <select id="findByCartId">
         SELECT
